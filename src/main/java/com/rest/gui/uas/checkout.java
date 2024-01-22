@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rsstst
  */
-public class checkout extends javax.swing.JFrame {
+public class checkout extends menu {
     
     private DefaultTableModel model_item;
     private String query;

@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rsstst
  */
-public class akun extends javax.swing.JFrame {
+public class akun extends menu {
     
     private DefaultTableModel model_item;
     private String query;

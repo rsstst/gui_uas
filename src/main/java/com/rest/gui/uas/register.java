@@ -6,7 +6,9 @@ package com.rest.gui.uas;
 
 import config.conn;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rsstst
  */
-public class login extends javax.swing.JFrame {
+public class register extends javax.swing.JFrame {
     
     private DefaultTableModel defaultTabel;
     private String query;
@@ -24,7 +26,7 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
-    public login() {
+    public register() {
         initComponents();
     }
 
@@ -43,13 +45,13 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        usnLogin = new javax.swing.JTextField();
+        usnRegister = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        pswLogin = new javax.swing.JPasswordField();
+        usnPsw = new javax.swing.JPasswordField();
         jPanel4 = new javax.swing.JPanel();
-        loginBtn = new javax.swing.JButton();
-        registerBtn = new javax.swing.JButton();
+        logBtn = new javax.swing.JButton();
+        regBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -60,8 +62,8 @@ public class login extends javax.swing.JFrame {
         jLabel3.setText("iSeller");
         jPanel2.add(jLabel3, new java.awt.GridBagConstraints());
 
-        jLabel4.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jLabel4.setText("Jual beli item game aman dan terpercaya");
+        jLabel4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel4.setText("Registrasi Akun");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -73,7 +75,7 @@ public class login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        jPanel1.add(usnLogin, gridBagConstraints);
+        jPanel1.add(usnRegister, gridBagConstraints);
 
         jLabel1.setText("Username");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -95,52 +97,53 @@ public class login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        jPanel1.add(pswLogin, gridBagConstraints);
+        jPanel1.add(usnPsw, gridBagConstraints);
 
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        loginBtn.setText("Login");
-        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+        logBtn.setText("Login");
+        logBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginBtnActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        jPanel4.add(loginBtn, gridBagConstraints);
-
-        registerBtn.setText("Register");
-        registerBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerBtnActionPerformed(evt);
+                logBtnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        jPanel4.add(registerBtn, gridBagConstraints);
+        jPanel4.add(logBtn, gridBagConstraints);
+
+        regBtn.setText("Register");
+        regBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        jPanel4.add(regBtn, gridBagConstraints);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,18 +153,16 @@ public class login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -169,42 +170,35 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        String user = usnLogin.getText();
-        String psw = pswLogin.getText();
+    private void logBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBtnActionPerformed
+        login log = new login();
+        log.setVisible(true);
+        log.pack();
+        log.setLocationRelativeTo(null);
+        log.setDefaultCloseOperation(login.EXIT_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_logBtnActionPerformed
+
+    private void regBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regBtnActionPerformed
+        String user = usnRegister.getText();
+        String psw = usnPsw.getText();
+        Date date = Date.valueOf(LocalDate.now());
         try {
             java.sql.Statement stmt = connect.createStatement();
-            query = "SELECT username, password FROM user WHERE username = '" + user + "' AND password = '" + psw + "' ";
-            java.sql.ResultSet rs = stmt.executeQuery(query);
-            String pw = "";
-            while (rs.next()){
-                usn = rs.getString("username");
-                pw = rs.getString("password"); 
-            }
-            if (user.equals(usn) && psw.equals(pw)){
-                JOptionPane.showMessageDialog(this, "Selamat datang!");
-                mainframe home = new mainframe();
-                home.setVisible(true);
-                home.pack();
-                home.setLocationRelativeTo(null);
-                home.setDefaultCloseOperation(login.EXIT_ON_CLOSE);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Username atau password anda salah!");
-            }
+            query = "INSERT INTO user (username, password, total_beli, tanggal_daftar)\nVALUES ('" + user + "', '" + psw + "', 0, '" + date + "');";
+            stmt.execute(query);
+            //System.out.println(query);
+            JOptionPane.showMessageDialog(this, "Selamat datang! Silakan login untuk melanjutkan");
+            login log = new login();
+            log.setVisible(true);
+            log.pack();
+            log.setLocationRelativeTo(null);
+            log.setDefaultCloseOperation(login.EXIT_ON_CLOSE);
+            dispose();
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_loginBtnActionPerformed
-
-    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        register reg = new register();
-        reg.setVisible(true);
-        reg.pack();
-        reg.setLocationRelativeTo(null);
-        reg.setDefaultCloseOperation(login.EXIT_ON_CLOSE);
-        dispose();
-    }//GEN-LAST:event_registerBtnActionPerformed
+    }//GEN-LAST:event_regBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,20 +217,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new register().setVisible(true);
             }
         });
     }
@@ -250,9 +245,9 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JButton loginBtn;
-    private javax.swing.JPasswordField pswLogin;
-    private javax.swing.JButton registerBtn;
-    private javax.swing.JTextField usnLogin;
+    private javax.swing.JButton logBtn;
+    private javax.swing.JButton regBtn;
+    private javax.swing.JPasswordField usnPsw;
+    private javax.swing.JTextField usnRegister;
     // End of variables declaration//GEN-END:variables
 }

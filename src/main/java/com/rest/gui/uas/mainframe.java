@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author rsstst
  */
-public class mainframe extends javax.swing.JFrame {
+public class mainframe extends menu {
 
     /**
      * Creates new form main
